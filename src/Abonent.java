@@ -20,6 +20,7 @@ class Abonent
         this.randomizer = randomizer;
         prime = diffieHellman.PrimeNumber;
         secret = diffieHellman.GetKey(this.randomizer, this.primemod, prime);
+        System.out.println("Публичный ключ " + name + ": " + prime );
     }
 
     public Abonent(String name, int randomizer, int primemod) {

@@ -9,16 +9,16 @@ class Main
 
         String message = TextReader.ReadText("messages/Input.txt");
 
-        int randomizeer = primeNum.GetPrimeNumber();
+        int randomizer = primeNum.GetPrimeNumber();
         int primemod = primeNum.GetPrimeNumber();
 
-        Abonent alice = new Abonent("Alice", randomizeer, primemod, message);
-        Abonent bob = new Abonent("Bob", randomizeer, primemod);
+        Abonent alice = new Abonent("Alice", randomizer, primemod, message);
+        Abonent bob = new Abonent("Bob", randomizer, primemod);
 
         BigInteger keyAlice = alice.GetKey(bob.prime);
         BigInteger keyBob = bob.GetKey(alice.prime);
 
-        System.out.println("Ключ Алисы: " + keyAlice + " Ключ Боба: " + keyBob);
+        System.out.println("Конечный ключ Алисы: " + keyAlice + " Конечный ключ Боба: " + keyBob);
 
         String encrypteMessage = alice.SendMessage(keyAlice);
 
