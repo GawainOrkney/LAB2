@@ -15,8 +15,8 @@ class Main
         Abonent alice = new Abonent("Alice", randomizer, primemod, message);
         Abonent bob = new Abonent("Bob", randomizer, primemod);
 
-        BigInteger keyAlice = alice.GetKey(bob.prime);
-        BigInteger keyBob = bob.GetKey(alice.prime);
+        BigInteger keyAlice = alice.GetKey(bob.public_key);
+        BigInteger keyBob = bob.GetKey(alice.public_key);
 
         System.out.println("Конечный ключ Алисы: " + keyAlice + " Конечный ключ Боба: " + keyBob);
 

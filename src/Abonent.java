@@ -9,7 +9,7 @@ class Abonent
     private int primemod;
 
     private BigInteger secret;
-    public int prime;
+    public int public_key;
 
 
     public Abonent(String name, int randomizer, int primemod, String sms)
@@ -18,9 +18,9 @@ class Abonent
         this.primemod = primemod;
         this.sms = sms;
         this.randomizer = randomizer;
-        prime = diffieHellman.PrimeNumber;
-        secret = diffieHellman.GetKey(this.randomizer, this.primemod, prime);
-        System.out.println("Публичный ключ " + name + ": " + prime );
+        public_key = diffieHellman.PrimeNumber;
+        secret = diffieHellman.GetKey(this.randomizer, this.primemod, public_key);
+        System.out.println("Публичный ключ " + name + ": " + public_key);
     }
 
     public Abonent(String name, int randomizer, int primemod) {
