@@ -9,14 +9,17 @@ class Main
 
         String message = TextReader.ReadText("messages/Input.txt");
 
-        int randomizer = primeNum.GetPrimeNumber();
-        int primemod = primeNum.GetPrimeNumber();
 
-        Abonent alice = new Abonent("Alice", randomizer, primemod, message);
-        Abonent bob = new Abonent("Bob", randomizer, primemod);
+        int g = primeNum.GetPrimeNumber();
+        int p = primeNum.GetPrimeNumber();
 
-        BigInteger keyAlice = alice.GetKey(bob.public_key);
-        BigInteger keyBob = bob.GetKey(alice.public_key);
+
+        Abonent alice = new Abonent("Alice", g, p, message);
+        Abonent bob = new Abonent("Bob", g, p);
+
+
+        BigInteger keyAlice = alice.GetKey(bob.public_M);
+        BigInteger keyBob = bob.GetKey(alice.public_M);
 
         System.out.println("Конечный ключ Алисы: " + keyAlice + " Конечный ключ Боба: " + keyBob);
 

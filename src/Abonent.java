@@ -3,24 +3,23 @@ import java.math.BigInteger;
 class Abonent
 {
     private DiffieHellman diffieHellman = new DiffieHellman();
-    private int randomizer;
+    private int g;
     private String sms;
     public String name;
-    private int primemod;
+    private int p;
 
-    private BigInteger secret;
-    public int public_key;
+    public BigInteger public_M;
+    private int secret_key;
 
 
-    public Abonent(String name, int randomizer, int primemod, String sms)
+    public Abonent(String name, int g, int p, String sms)
     {
         this.name = name;
-        this.primemod = primemod;
+        this.p = p;
         this.sms = sms;
-        this.randomizer = randomizer;
-        public_key = diffieHellman.PrimeNumber;
-        secret = diffieHellman.GetKey(this.randomizer, this.primemod, public_key);
-        System.out.println("Публичный ключ " + name + ": " + public_key);
+        this.g = g;
+        secret_key = diffieHellman.PrimeNumber;
+        public_M = diffieHellman.GetKey(this.g, this.p, secret_key);
     }
 
     public Abonent(String name, int randomizer, int primemod) {
@@ -28,12 +27,12 @@ class Abonent
         this(name, randomizer, primemod, "");
     }
 
-    public BigInteger GetKey(int prime)
+    public BigInteger GetKey(BigInteger public_M)
     {
-        BigInteger g = secret.pow(prime);
-        BigInteger Chave = g.mod(new BigInteger(Integer.toString(primemod)));
+        BigInteger g = public_M.pow(secret_key);
+        BigInteger K = g.mod(new BigInteger(Integer.toString(p)));
 
-        return Chave;
+        return K;
     }
 
     public String SendMessage(BigInteger key)
